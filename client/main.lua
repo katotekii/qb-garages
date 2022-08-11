@@ -286,7 +286,9 @@ RegisterNetEvent("qb-garages:client:VehicleList", function(data)
                 local enginePercent = round(v.engine / 10, 0)
                 local bodyPercent = round(v.body / 10, 0)
                 local currentFuel = v.fuel
-                local vname = QBCore.Shared.Vehicles[v.vehicle].name
+                local vname
+                        
+                if not QBCore.Shared.Vehicles[v.vehicle] then vname = 'NULL' else vname = QBCore.Shared.Vehicles[v.vehicle].name end 
 
                 if v.state == 0 then
                     v.state = Lang:t("status.out")
